@@ -12,9 +12,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.build.java.target>1.7</project.build.java.target>
-		<maven.compiler.source>1.7</maven.compiler.source>
-   		<maven.compiler.target>1.7</maven.compiler.target>
+		<project.build.java.target>1.8</project.build.java.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -22,6 +22,26 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>3.1.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>gherkin</artifactId>
+			<version>2.12.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.vimalselvam</groupId>
+			<artifactId>cucumber-extentsreport</artifactId>
+			<version>3.0.1</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
@@ -34,7 +54,7 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
-			<version>2.1.0</version>
+			<version>2.3.0</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
@@ -83,29 +103,29 @@
 
 	</dependencies>
 	<build>
-     <plugins>
-      <plugin>
-       <groupId>org.codehaus.mojo</groupId>
-       <artifactId>exec-maven-plugin</artifactId>
-       <version>1.6.0</version>
-       <executions>
-        <execution>
-         <phase>integration-test</phase>
-         <goals>
-         	<goal>java</goal>
-         </goals>
-         <configuration>
-       	 	<executableDependency>
-             	<groupId>info.cukes</groupId>
-             	<artifactId>cucumber-core</artifactId>
-            </executableDependency>
-         	<mainClass>execution.TestRunerTest</mainClass>
-         	<arguments></arguments>
-         </configuration>
-        </execution>
-       </executions>
-      </plugin>
-     </plugins>
-    </build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<executableDependency>
+								<groupId>info.cukes</groupId>
+								<artifactId>cucumber-core</artifactId>
+							</executableDependency>
+							<mainClass>execution.TestRunerTest</mainClass>
+							<arguments></arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

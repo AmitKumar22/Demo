@@ -1,9 +1,14 @@
 package utilityCommon;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,10 +19,6 @@ import org.openqa.selenium.support.ui.Select;
 public class CommonMethods {
 	protected static WebDriver driver;
 
-	// public CommonMethods(WebDriver driver) {
-	// this.driver = driver;
-	// }
-
 	// ------------ Verify the text with text get from objects ---------
 	public static void verifyText(WebElement obj, String txt) {
 		try {
@@ -27,7 +28,7 @@ public class CommonMethods {
 		} catch (AssertionError e) {
 			System.out.println(e.getMessage());
 			CommonMethods.closeBrowser();
-			//Assert.assertFalse(true);
+			// Assert.assertFalse(true);
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			Assert.assertFalse(true);
@@ -96,6 +97,14 @@ public class CommonMethods {
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
+	}
+
+	// ------------ Take Screen shot -----------
+	public static void takeScreenShot(String screenShotName) throws IOException {
+		File screenShotFile = ((TakesScreenshot) driver)
+				.getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(screenShotFile, new File("../target/screenShots/"
+				+ screenShotName + ".png"));
 	}
 
 }

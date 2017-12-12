@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 
-import utilityCommon.CommonMethods;
 import businessLogic.EW_Login;
 import cucumber.api.DataTable;
-import cucumber.api.java.en.*;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import utilityCommon.CommonMethods;
 
 public class EW_Login_Step {
 
@@ -69,4 +72,29 @@ public class EW_Login_Step {
 		List<List<String>> data = arg1.raw();
 		login.verifyLoggedInUser(data.get(1).get(0));
 	}
+	
+	/*@After("@selenium")
+    public void killBrowser(Scenario scenario) throws IOException{
+        if (scenario.isFailed()) {
+        	CommonMethods.takeScreenShot("screenShotName");
+        }
+        driver.close();
+        driver.quit();
+    }
+	
+	@Rule
+	public TestRule listen = new TestWatcher()
+	{
+		@Override
+		public void failed(Throwable t, Description description)
+		{
+			try{
+			
+				CommonMethods.takeScreenShot(description.getClassName()+ ", " + description.getMethodName());
+			}catch(IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	};*/
 }
