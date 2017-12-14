@@ -27,7 +27,7 @@ public class CommonMethods {
 					obj.getText());
 		} catch (AssertionError e) {
 			System.out.println(e.getMessage());
-			CommonMethods.closeBrowser();
+			//CommonMethods.closeBrowser();
 			// Assert.assertFalse(true);
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
